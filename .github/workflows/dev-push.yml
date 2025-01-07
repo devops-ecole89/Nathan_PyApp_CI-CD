@@ -1,5 +1,6 @@
 name: GitHub Push on Dev Branch
 
+### Actions trigger on push on the dev branch
 on:
   push:
     branches:
