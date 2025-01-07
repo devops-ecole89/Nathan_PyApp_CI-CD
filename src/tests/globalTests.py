@@ -1,13 +1,13 @@
-from firstTest import firstTest
+from tests.firstTest import firstTest
 
 ### Main function that performs the test battery
 def allTests():
 	# Init Number Errors Found variable
-	var nbrErrors = 0
+	nbrErrors = 0
 
 	# Performs the first test
-	if firtTest("Nathan") != True:
-		nbrErrors++
+	if firstTest("Nathan") != True:
+		nbrErrors+=1
 
 	# Check if there is any Errors found
 	if nbrErrors == 0:
