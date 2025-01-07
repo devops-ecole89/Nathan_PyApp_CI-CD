@@ -1,5 +1,6 @@
 name: GitHub Push on Dev Branch
 
+### Actions trigger on push on the dev branch
 on:
   push:
     branches:
@@ -28,6 +29,11 @@ jobs:
       run: |
         sudo mkdir /docker_checking
         sudo git clone https://github.com/devops-ecole89/Nathan_Docker_CI-CD.git /docker_checking/
+
+    - name: get launch script
+      run: |
+        sudo mkdir scripts
+        sudo cp /docker_checking/scripts/launch_dev.sh ./scripts
 
     - name: Run Shell Script for Docker Checking
       run: sudo sh /docker_checking/scripts/docker_dev_test.sh --github
