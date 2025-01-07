@@ -1,5 +1,3 @@
-
-```python
 from firstTest import firstTest
 
 ### Main function that performs the test battery
@@ -16,4 +14,3 @@ def allTests():
 		print ("SUCCESS")
 	else:
 		print ("There is ", nbrErrors, "Errors")
-```

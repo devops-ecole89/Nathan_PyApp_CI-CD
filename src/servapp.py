@@ -1,7 +1,8 @@
-```python
 import sys
+
+#sys.path.insert(1, '/home/parallels/Documents/DevOps/PyApp_CI-CD/src/tests')
 from flask import Flask
-from "tests/global" import allTests
+from global import allTests
 app = Flask(__name__)
 
 ### Classic app just return Hello
