@@ -30,7 +30,9 @@ Install tools and dependencies for the application utilisation :
 ├── src/
 │   ├── servapp.py            # Main file of the app
 │   └── tests/                # Tests directory
-│       └── firstTest.py      # First and only test. Execute by 'servapp.py -dev'
+│       ├── __init.py__       # File to add path for import
+│       ├── globalTests.py    # Global function that trigger all tests. Execute by 'servapp.py -dev'
+│       └── firstTest.py      # First and only test. Execute by allTests() in globalTests.py
 └── README.md                 # Project documentation
 ```
 
