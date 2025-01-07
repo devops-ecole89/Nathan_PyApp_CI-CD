@@ -27,10 +27,7 @@ jobs:
     - name: Prepare docker env
       run: |
         sudo mkdir /docker_checking
-        sudo git clone https://github.com/devops-ecole89/Nathan_PyApp_CI-CD.git /docker_checking/
-
-    - name: test ls
-      run: ls /docker_checking
+        sudo git clone https://github.com/devops-ecole89/Nathan_Docker_CI-CD.git /docker_checking/
 
     - name: Run Shell Script for Docker Checking
       run: sudo sh /docker_checking/scripts/docker_dev_test.sh --github
