@@ -1,0 +1,33 @@
+name: GitHub Push on Dev Branch
+
+on:
+  push:
+    branches:
+    - dev
+
+jobs:
+  dev-branch-checking:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Insall Docker
+      run: sudo apt install docker
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Get branches
+      run: git pull
+
+    - name: Prepare docker env
+      run: |
+        sudo mkdir /docker_checking
+        sudo git clone https://github.com/devops-ecole89/Nathan_PyApp_CI-CD.git /docker_checking/
+
+    - name: Run Shell Script for Docker Checking
+      run: sudo sh /docker_checking/scripts/docker_dev_test.sh --github
