@@ -1,0 +1,31 @@
+name: GitHub Push on Staging Branch
+
+### Action trigger on push on staging branch
+on:
+  push:
+    branches:
+    - staging
+
+### Use the latest version of ubunut
+## The goal is to create a pull request
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v3
+
+    ### Set up git global config for git command
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    ### Fetch the full repo to get the staging branch
+    - name: Get all branches
+      run: git fetch --all
+
+    ### Create the pull request with github command
+    - name: Create pull request
+      run: gh pr create --base main --head staging --title "Automatique pull request"
