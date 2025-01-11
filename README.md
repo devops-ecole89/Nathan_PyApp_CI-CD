@@ -25,7 +25,6 @@ Install tools and dependencies for the application utilisation :
 ├── .github/                  # GitHub workflows
 │   └── workflows/
 │       ├── dev-push.yml      # Workflow trigger by dev branch push. If tests Ok then push to staging
-│       ├── staging-push.yml  # Workflow trigger by staging branch push. Create a pull request to main
 │       └── main-push.yml     # Workflow trigger by main branch push. Update the public Docker image
 ├── src/
 │   ├── servapp.py            # Main file of the app
