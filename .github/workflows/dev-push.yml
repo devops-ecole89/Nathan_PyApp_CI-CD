@@ -45,9 +45,10 @@ jobs:
     - name: Run Shell Script for Docker Checking
       run: sudo sh /docker_checking/scripts/docker_dev_test.sh --github
 
+    - name: je veux voir le putain de token
+      run: echo ${{ secrets.GH_TOKEN }}
+
     - name: Create pull request
-      run: |
-        git checkout main
-        gh pr create --base main --head staging --title "Automatique pull request"
+      run: gh pr create --base main --head staging --title "Automatique pull request"
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
