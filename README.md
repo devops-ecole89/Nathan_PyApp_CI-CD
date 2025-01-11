@@ -37,6 +37,9 @@ Install tools and dependencies for the application utilisation :
 ```
 
 ---
+## Workflows
+
+---
 ## Contributors
 
 Nathan: Master mind :)
