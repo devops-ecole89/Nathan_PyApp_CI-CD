@@ -5,6 +5,9 @@ on:
     branches:
     - main
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   generate-docker-image:
     runs-on: ubuntu-latest
@@ -25,8 +28,9 @@ jobs:
 
       - name: Log in DockerHub
 #        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
+          registry: ${{ env.REGISTRY }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
