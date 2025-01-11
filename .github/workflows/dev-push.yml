@@ -44,3 +44,8 @@ jobs:
     ### Start the process with the special flag --github to adapt the script
     - name: Run Shell Script for Docker Checking
       run: sudo sh /docker_checking/scripts/docker_dev_test.sh --github
+
+    - name: Create pull request
+      run: |
+        git checkout main
+        gh pr create --base main --head staging --title "Automatique pull request"
