@@ -6,9 +6,6 @@ on:
     branches:
     - dev
 
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
 ### Use the latest version of ubuntu
 jobs:
   dev-branch-checking:
@@ -49,6 +46,6 @@ jobs:
       run: sudo sh /docker_checking/scripts/docker_dev_test.sh --github
 
     - name: Create pull request
-      run: |
-        git checkout main
-        gh pr create --base main --head staging --title "Automatique pull request"
+      run: gh pr create --base main --head staging --title "Automatique pull request" --body "Pull request create by actions after the staging merge branch"
+      env:
+        GH_TOKEN: ${{ secrets.TOKEN }}
