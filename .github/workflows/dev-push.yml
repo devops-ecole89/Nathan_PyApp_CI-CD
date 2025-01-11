@@ -6,6 +6,9 @@ on:
     branches:
     - dev
 
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
 ### Use the latest version of ubuntu
 jobs:
   dev-branch-checking:
