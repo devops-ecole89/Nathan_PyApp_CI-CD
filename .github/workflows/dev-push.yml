@@ -1,0 +1,51 @@
+name: GitHub Push on Dev Branch
+
+### Actions trigger on push on the dev branch
+on:
+  push:
+    branches:
+    - dev
+
+### Use the latest version of ubuntu
+jobs:
+  dev-branch-checking:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    ### Install docker to reuse the Docker_Dev container of the Docker_CI-CD repo
+    - name: Insall Docker
+      run: sudo apt install docker
+
+    ### Set up git global config fot git command
+    - name: Set up Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    ### Get all branches for the access of dev and staging branches to merge
+    - name: Get branches
+      run: git pull
+
+    ### Clone the Docker_CI-CD repo to use tests scripts that will do every tasks
+    - name: Prepare docker env
+      run: |
+        sudo mkdir /docker_checking
+        sudo git clone https://github.com/devops-ecole89/Nathan_Docker_CI-CD.git /docker_checking/
+
+    ### We have to moove the launch_dev file to build the container correctly
+    - name: get launch script
+      run: |
+        sudo mkdir scripts
+        sudo cp /docker_checking/scripts/launch_dev.sh ./scripts
+
+    ### Start the process with the special flag --github to adapt the script
+    - name: Run Shell Script for Docker Checking
+      run: sudo sh /docker_checking/scripts/docker_dev_test.sh --github
+
+    - name: Create pull request
+      run: gh pr create --base main --head staging --title "Automatique pull request" --body "Pull request create by actions after the staging merge branch"
+      env:
+        GH_TOKEN: ${{ secrets.TOKEN }}
