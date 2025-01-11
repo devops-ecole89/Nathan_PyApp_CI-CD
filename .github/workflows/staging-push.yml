@@ -2,7 +2,7 @@ name: GitHub Push on Staging Branch
 
 ### Action trigger on push on staging branch
 on:
-  push:
+  merge:
     branches:
     - staging
 
