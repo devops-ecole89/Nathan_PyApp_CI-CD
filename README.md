@@ -37,6 +37,10 @@ Install tools and dependencies for the application utilisation :
 
 ---
 ## Workflows
+There is two workflows files. The first one, wich is trigger on dev push, realize two tasks:
+1. Process the automatics tests and merge to the staging branch if it's successfull.
+2. Create a pull request between staging and main to merge into main.
+The second workflow is for an automatic push of a Docker image on Docker hub. It is trigger by push on main branch but the Docker Hub connexion doesn't work...
 
 ---
 ## Contributors
